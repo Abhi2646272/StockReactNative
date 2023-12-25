@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet,TouchableOpacity } from 'react-native';
 
-const Login = () => {
+const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -17,6 +17,9 @@ const Login = () => {
       // Authentication failed
       setError('Invalid email or password');
     }
+  };
+  const handleRegisterPress = () => {
+    navigation.navigate('Register');
   };
 
   return (
@@ -37,6 +40,9 @@ const Login = () => {
         onChangeText={(text) => setPassword(text)}
       />
       <Button style={styles.input} title="Login" onPress={handleLogin} />
+      <TouchableOpacity onPress={handleRegisterPress}>
+        <Text style={styles.registerButton}>Register</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -65,6 +71,12 @@ const styles = StyleSheet.create({
   error: {
     color: 'red',
     marginBottom: 16,
+  },
+  registerButton: {
+    color: 'blue',
+    marginTop: 16,
+    textAlign: 'center',
+    fontSize: 16,
   },
 });
 
