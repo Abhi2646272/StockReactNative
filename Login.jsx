@@ -11,7 +11,8 @@ const Login = ({navigation}) => {
     // For simplicity, we'll just check if the email and password match a hardcoded value
     if (email === 'user@example.com' && password === 'password') {
       // Authentication successful
-      alert('Login successful!');
+      navigation.navigate('Dashboard');
+      // alert('Login successful!');
       // You may also navigate to another screen or update the state accordingly
     } else {
       // Authentication failed
